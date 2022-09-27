@@ -1,11 +1,16 @@
-import './style/index.css'
+import "./style/index.css";
 
-import App from './App'
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import App from "./App";
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+if (import.meta.env.DEV) {
+  const { worker } = await import("./msw/index");
+  worker.start();
+}
+
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
-)
+);
