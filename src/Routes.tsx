@@ -1,3 +1,4 @@
+import { Collection } from "./pages/Collection";
 import { ErrorBoundary } from "./pages/ErrorBoundary";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
@@ -7,18 +8,19 @@ export const router = createBrowserRouter([
   {
     path: "/",
     errorElement: <ErrorBoundary />,
-    loader: () => {
-      throw new Response("Not found", { status: 404 });
-    },
-  },
-  {
-    path: "/login",
-    element: <Login />,
-    errorElement: <ErrorBoundary />,
-  },
-  {
-    path: "/home",
-    element: <Home />,
-    errorElement: <ErrorBoundary />,
+    children: [
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "home",
+        element: <Home />,
+      },
+      {
+        path: "collection/:collectionName",
+        element: <Collection />,
+      },
+    ],
   },
 ]);
