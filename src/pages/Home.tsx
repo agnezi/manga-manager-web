@@ -7,14 +7,17 @@ export const Home: React.FC = () => {
     {
       name: "Naruto",
       details: "A crazy boy",
+      route: "/collection/naruto",
     },
     {
       name: "Rourouni Kenshin",
       details: "The samurai with an X on his face",
+      route: "/collection/samuraiX",
     },
     {
       name: "20th Century Boys",
       details: "The crazy friends",
+      route: "/collection/centuryBoys",
     },
   ];
 
@@ -26,6 +29,7 @@ export const Home: React.FC = () => {
         {collections.map((collection) => (
           <React.Fragment key={collection.name + collection.details}>
             <CollectionActionCard
+              route={collection.route}
               name={collection.name}
               details={collection.details}
             />

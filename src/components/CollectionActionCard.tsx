@@ -1,11 +1,19 @@
 import { BsArrowBarRight } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   name: string;
   details: string;
+  route: string;
 }
 
-export const CollectionActionCard: React.FC<Props> = ({ name, details }) => {
+export const CollectionActionCard: React.FC<Props> = ({
+  name,
+  details,
+  route,
+}) => {
+  const navigate = useNavigate();
+
   return (
     <div
       className="flex justify-center items-start flex-col flex-wrap border border-gray-400
@@ -17,6 +25,7 @@ export const CollectionActionCard: React.FC<Props> = ({ name, details }) => {
         <button
           type="button"
           className="text-sm border rounded-md border-blue-500 bg-blue-300 p-1 text-white"
+          onClick={() => navigate(route)}
         >
           Go to
         </button>
